@@ -1,18 +1,18 @@
 var economy = {
 	balance: 10000,
-	salePricePerMW: 100,
+	salePricePerMW: 4,
 	revenue: 0,
 	upkeep: 0,
 	
 	onIncreaseSalePrice: function () {
-		this.salePricePerMW += 10;
+		this.salePricePerMW += 1;
 	},
 	
 	onDecreaseSalePrice: function () {
-		this.salePricePerMW -= 10;
+		this.salePricePerMW -= 1;
 		
 		if (this.salePricePerMW <= 0)
-			this.salePricePerMW = 10;
+			this.salePricePerMW = 1;
 	},
 	
 	tryPurchase: function(cost) {
@@ -39,8 +39,8 @@ var coal = {
 		upkeep: 0,
 		
 		minerCount: 0,
-		minerRate: 10,
-		minerUpkeep: 10,
+		minerRate: 2,
+		minerUpkeep: 1,
 		
 		maxRate: 0,
 		maxUpkeep: 0,
@@ -59,8 +59,8 @@ var coal = {
 		onUpgradeRate: function () {
 			if (economy.tryPurchase(this.priceUpgradeRate))
 			{
-				this.minerRate += 5;
-				this.minerUpkeep += 2;
+				this.minerRate += 2;
+				this.minerUpkeep += 0.5;
 				this.priceUpgradeRate += 1000;
 				this.refreshCaches();
 			}
@@ -77,8 +77,8 @@ var coal = {
 		upkeep: 0,
 		
 		unitCount: 0,
-		unitCapacity: 2000,
-		unitUpkeep: 100,
+		unitCapacity: 200,
+		unitUpkeep: 10,
 		
 		maxCapacity: 0,
 		maxUpkeep: 0,
@@ -97,8 +97,8 @@ var coal = {
 		onUpgradeCapacity: function () {
 			if (economy.tryPurchase(this.priceUpgradeCapacity))
 			{
-				this.unitCapacity += 1000;
-				this.unitUpkeep += 20;
+				this.unitCapacity += 100;
+				this.unitUpkeep += 5;
 				this.priceUpgradeCapacity += 5000;
 				this.refreshCaches();
 			}
@@ -115,12 +115,12 @@ var coal = {
 		upkeep: 0,
 		
 		turbineCount: 0,
-		turbineBurnRate: 10,
+		turbineBurnRate: 5,
 		turbineOutput: 50,
 		turbineEfficiency: 40,
-		turbineUpkeep: 50,
+		turbineUpkeep: 10,
 		
-		maxBurnRate: 10,
+		maxBurnRate: 0,
 		maxOutput: 0,
 		maxUpkeep: 0,
 		
@@ -138,7 +138,7 @@ var coal = {
 		},
 		
 		onUpgradeBurnRate: function () {
-			if (this.turbineBurnRate <= 5)
+			if (this.turbineBurnRate <= 1)
 				return;
 			
 			if (economy.tryPurchase(this.priceUpgradeBurnRate))

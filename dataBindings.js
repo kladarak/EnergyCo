@@ -12,8 +12,8 @@ function formatValue(value, unit) {
 	switch (unit)
 	{
 		case UNIT.NONE: return value;
-		case UNIT.MONEY: return "$" + value;
-		case UNIT.MASS: return value + " t";
+		case UNIT.MONEY: return "$" + value + " k";
+		case UNIT.MASS: return value + " kt";
 		case UNIT.POWER: return value + " MW";
 		case UNIT.PERCENTAGE: return value + "%";
 		case UNIT.BUY: return "Buy: $" + value;
