@@ -29,6 +29,38 @@ var power = {
 	demand: 0,
 };
 
+var research = {
+	knowledge: 0,
+	upkeep: 0,
+	
+	scientistCount: 0,
+	scientistRate: 10,
+	scientistUpkeep: 10,
+	
+	maxRate: 0,
+	maxUpkeep: 0,
+	
+	priceBuyScientist: 5000,
+	
+	onBuyScientist: function () {
+		if (economy.tryPurchase(this.priceBuyScientist))
+		{
+			this.scientistCount++;
+			this.refreshCaches();
+		}
+	},
+		
+	refreshCaches: function () {
+		this.maxRate = this.scientistCount * this.scientistRate;
+		this.maxUpkeep = this.scientistCount * this.scientistUpkeep;
+	},
+	
+	update: function () {
+		this.knowledge += this.maxRate;
+		this.upkeep = this.maxUpkeep;
+	},
+};
+
 var coal = {
 	quarry: {
 		supply: 40000,
@@ -207,5 +239,6 @@ var coal = {
 var dataModel = {
 	economy: economy,
 	power: power,
+	research: research,
 	coal: coal,
 };

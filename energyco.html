@@ -41,6 +41,10 @@
 			<div class="container">
 				<h1>Power</h1>
 				<table>
+					<colgroup>
+						<col class="fifty" />
+						<col class="fifty" />
+					</colgroup>
 					<tr>
 						<th><h2 class="stat-header">Supply</h2></th>
 						<th><h2 class="stat-header">Demand</h2></th>
@@ -50,6 +54,51 @@
 						<td id="power-demand" class="value power big-text"></td>
 					</tr>
 				</table>
+			</div>
+			
+			<div class="h-spacer"></div>
+			
+			<div class="container">
+				<h1>Research</h1>
+				<table>
+					<colgroup>
+						<col class="fifty" />
+						<col class="fifty" />
+					</colgroup>
+					<tr>
+						<th><h2 class="gain-header">Knowledge</h2></th>
+						<th><h2 class="loss-header">Upkeep</h2></th>
+					</tr>
+					<tr>
+						<td id="research-knowledge" class="value big-text"></td>
+						<td id="research-upkeep" class="value money big-text"></td>
+					</tr>
+				</table>
+				<div class="box">
+					<table>
+						<tr>
+							<td>Scientist Count</td>
+							<td id="research-scientistCount" class="value"></td>
+							<td>
+								<button id="research-onBuyScientist" class="action-button">
+									<div id="research-priceBuyScientist" class="value buy"></div>
+								</button>
+							</td>
+						</tr>
+						<tr>
+							<td>Scientist Rate</td>
+							<td id="research-scientistRate" class="value"></td>
+						</tr>
+						<tr>
+							<td>Scientist Upkeep</td>
+							<td id="research-scientistUpkeep" class="value money"></td>
+						</tr>
+						<tr>
+							<td>Max Rate</td>
+							<td id="research-maxRate" class="value"></td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 		
