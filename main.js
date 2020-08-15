@@ -1,0 +1,2 @@
+registerBindings();
+update();

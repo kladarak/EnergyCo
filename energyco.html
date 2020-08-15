@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Energy Co</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=3000">
+		<link rel="stylesheet" type="text/css" href="./style.css">
+		<script src="./dataModels.js" defer="defer"></script>
+		<script src="./dataBindings.js" defer="defer"></script>
+		<script src="./logic.js" defer="defer"></script>
+		<script src="./main.js" defer="defer"></script>
+	</head>
+	<body>
+		<!--- Main Stats --->
+		<div class="flex-container">
+			<div class="container">
+				<h1>Economy</h1>
+				<div class="box">
+					<div id="economy-balance" class="big-text"></div>
+					<table>
+						<tr>
+							<td>Sale Price Per MW</td>
+							<td id="economy-sale-price"></td>
+							<td><button id="economy-decrease-sale-price" class="action-button">-</button></td>
+							<td><button id="economy-increase-sale-price" class="action-button">+</button></td>
+						</tr>
+						<tr>
+							<td>Revenue</td>
+							<td id="economy-revenue"></td>
+						</tr>
+						<tr>
+							<td>Upkeep</td>
+							<td id="economy-upkeep"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			<div class="h-spacer"></div>
+			
+			<div class="container">
+				<h1>Power</h1>
+				<table>
+					<tr>
+						<th><h2 class="stat-header">Supply</h2></th>
+						<th><h2 class="stat-header">Demand</h2></th>
+					</tr>
+					<tr>
+						<td id="power-supply" class="big-text"></td>
+						<td id="power-demand" class="big-text"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<div class="v-spacer"></div>
+			
+		<!--- Coal --->
+		<div class="flex-container">
+			<h1 class="row-header-name">Coal</h1>
+		
+			<div class="h-spacer"></div>
+		
+			<div class="container">
+				<h1>Quarry</h1>
+				<div class="box">
+					<div id="coal-quarry" class="big-text"></div>
+				</div>
+			</div>
+			
+			<div class="h-spacer"></div>
+			
+			<div class="container">
+				<h1>Mining</h1>
+				<table>
+					<colgroup>
+						<col class="fifty" />
+						<col class="fifty" />
+					</colgroup>
+					<tr>
+						<th><h2 class="gain-header">Rate</h2></th>
+						<th><h2 class="loss-header">Upkeep</h2></th>
+					</tr>
+					<tr>
+						<td id="coal-mining-rate" class="big-text"></td>
+						<td id="coal-mining-upkeep" class="big-text"></td>
+					</tr>
+				</table>
+				<div class="box">
+					<table>
+						<tr>
+							<td>Miner Count</td>
+							<td id="coal-mining-miner-count"></td>
+							<td><button id="coal-mining-buy-miner" class="action-button"></button></td>
+						</tr>
+						<tr>
+							<td>Miner Rate</td>
+							<td id="coal-mining-miner-rate"></td>
+							<td><button id="coal-mining-buy-upgrade-rate" class="action-button"></button></td>
+						</tr>
+						<tr>
+							<td>Miner Upkeep</td>
+							<td id="coal-mining-miner-upkeep"></td>
+						</tr>
+						<tr>
+							<td>Max Rate</td>
+							<td id="coal-mining-max-rate"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			<div class="h-spacer"></div>
+			
+			<div class="container">
+				<h1>Storage</h1>
+				<table>
+					<colgroup>
+						<col class="fifty" />
+						<col class="fifty" />
+					</colgroup>
+					<tr>
+						<th><h2 class="gain-header">Stored</h2></th>
+						<th><h2 class="loss-header">Upkeep</h2></th>
+					</tr>
+					<tr>
+						<td id="coal-storage-stored" class="big-text"></td>
+						<td id="coal-storage-upkeep" class="big-text"></td>
+					</tr>
+				</table>
+				<div class="box">
+					<table>
+						<tr>
+							<td>Unit Count</td>
+							<td id="coal-storage-unit-count"></td>
+							<td><button id="coal-storage-buy-unit" class="action-button"></button></td>
+						</tr>
+						<tr>
+							<td>Unit Capacity</td>
+							<td id="coal-storage-unit-capacity"></td>
+							<td><button id="coal-storage-buy-upgrade-capacity" class="action-button"></button></td>
+						</tr>
+						<tr>
+							<td>Unit Upkeep</td>
+							<td id="coal-storage-unit-upkeep"></td>
+						</tr>
+						<tr>
+							<td>Max Capacity</td>
+							<td id="coal-storage-max-capacity"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			<div class="h-spacer"></div>
+			
+			<div class="container">
+				<h1>Generators</h1>
+				<table>
+					<colgroup>
+						<col class="fifty" />
+						<col class="fifty" />
+					</colgroup>
+					<tr>
+						<th><h2 class="gain-header">Output</h2></th>
+						<th><h2 class="loss-header">Upkeep</h2></th>
+					</tr>
+					<tr>
+						<td id="coal-generators-output" class="big-text"></td>
+						<td id="coal-generators-upkeep" class="big-text"></td>
+					</tr>
+				</table>
+				<div class="box">
+					<table>
+						<tr>
+							<td>Turbine Count</td>
+							<td id="coal-generators-turbine-count"></td>
+							<td><button id="coal-generators-buy-turbine" class="action-button"></button></td>
+						</tr>
+						<tr>
+							<td>Turbine Burn Rate</td>
+							<td id="coal-generators-turbine-burn-rate"></td>
+							<td><button id="coal-generators-buy-upgrade-burn-rate" class="action-button"></button></td>
+						</tr>
+						<tr>
+							<td>Turbine Output</td>
+							<td id="coal-generators-turbine-output"></td>
+							<td><button id="coal-generators-buy-upgrade-output" class="action-button"></button></td>
+						</tr>
+						<tr>
+							<td>Turbine Efficiency</td>
+							<td id="coal-generators-turbine-efficiency"></td>
+							<td><button id="coal-generators-buy-upgrade-efficiency" class="action-button"></button></td>
+						</tr>
+						<tr>
+							<td>Turbine Upkeep</td>
+							<td id="coal-generators-turbine-upkeep"></td>
+						</tr>
+						<tr>
+							<td>Max Burn Rate</td>
+							<td id="coal-generators-max-burn-rate"></td>
+						</tr>
+						<tr>
+							<td>Max Output</td>
+							<td id="coal-generators-max-output"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
