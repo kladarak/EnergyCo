@@ -40,13 +40,13 @@ var coal = {
 		
 		minerCount: 0,
 		minerRate: 10,
-		minerUpkeep: 1,
+		minerUpkeep: 10,
 		
 		maxRate: 0,
 		maxUpkeep: 0,
 		
 		priceHireMiner: 500,
-		priceUpgradeRate: 500,
+		priceUpgradeRate: 2000,
 		
 		onHireMiner: function () {
 			if (economy.tryPurchase(this.priceHireMiner))
@@ -57,6 +57,13 @@ var coal = {
 		},
 		
 		onUpgradeRate: function () {
+			if (economy.tryPurchase(this.priceUpgradeRate))
+			{
+				this.minerRate += 5;
+				this.minerUpkeep += 2;
+				this.priceUpgradeRate += 1000;
+				this.refreshCaches();
+			}
 		},
 		
 		refreshCaches: function () {
@@ -71,13 +78,13 @@ var coal = {
 		
 		unitCount: 0,
 		unitCapacity: 2000,
-		unitUpkeep: 10,
+		unitUpkeep: 100,
 		
 		maxCapacity: 0,
 		maxUpkeep: 0,
 		
-		priceBuyUnit: 500,
-		priceUpgradeCapacity: 100,
+		priceBuyUnit: 1000,
+		priceUpgradeCapacity: 5000,
 		
 		onBuyUnit: function () {
 			if (economy.tryPurchase(this.priceBuyUnit))
@@ -88,6 +95,13 @@ var coal = {
 		},
 		
 		onUpgradeCapacity: function () {
+			if (economy.tryPurchase(this.priceUpgradeCapacity))
+			{
+				this.unitCapacity += 1000;
+				this.unitUpkeep += 20;
+				this.priceUpgradeCapacity += 5000;
+				this.refreshCaches();
+			}
 		},
 		
 		refreshCaches: function () {
@@ -104,16 +118,16 @@ var coal = {
 		turbineBurnRate: 10,
 		turbineOutput: 50,
 		turbineEfficiency: 40,
-		turbineUpkeep: 5,
+		turbineUpkeep: 50,
 		
 		maxBurnRate: 10,
 		maxOutput: 0,
 		maxUpkeep: 0,
 		
 		priceBuyTurbine: 500,
-		priceUpgradeBurnRate: 500,
-		priceUpgradeOutput: 500,
-		priceUpgradeEfficiency: 500,
+		priceUpgradeBurnRate: 5000,
+		priceUpgradeOutput: 5000,
+		priceUpgradeEfficiency: 5000,
 		
 		onBuyTurbine: function () {
 			if (economy.tryPurchase(this.priceBuyTurbine))
@@ -124,12 +138,39 @@ var coal = {
 		},
 		
 		onUpgradeBurnRate: function () {
+			if (this.turbineBurnRate <= 5)
+				return;
+			
+			if (economy.tryPurchase(this.priceUpgradeBurnRate))
+			{
+				this.turbineBurnRate -= 1;
+				this.turbineUpkeep += 1;
+				this.priceUpgradeBurnRate += 5000;
+				this.refreshCaches();
+			}
 		},
 		
 		onUpgradeOutput: function () {
+			if (economy.tryPurchase(this.priceUpgradeOutput))
+			{
+				this.turbineOutput += 10;
+				this.turbineUpkeep += 5;
+				this.priceUpgradeOutput += 5000;
+				this.refreshCaches();
+			}
 		},
 		
 		onUpgradeEfficiency: function () {
+			if (this.turbineEfficiency >= 95)
+				return;
+			
+			if (economy.tryPurchase(this.priceUpgradeEfficiency))
+			{
+				this.turbineEfficiency += 5;
+				this.turbineUpkeep += 10;
+				this.priceUpgradeEfficiency += 5000;
+				this.refreshCaches();
+			}
 		},
 		
 		refreshCaches: function () {

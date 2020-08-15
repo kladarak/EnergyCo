@@ -52,8 +52,8 @@ function registerBindings() {
 	bind("coal-generators-buy-upgrade-output",		coal.generators,	"priceUpgradeOutput",		function (v) { return "Upgrade $" + v; });
 	bind("coal-generators-buy-upgrade-efficiency",	coal.generators,	"priceUpgradeEfficiency",	function (v) { return "Upgrade $" + v; });
 	bind("coal-generators-buy-turbine",				coal.generators,	"onBuyTurbine");
-	bind("coal-generators-buy-upgrade-burn-rate",	coal.generators,	"onUpgradeConsumptionRate");
-	bind("coal-generators-buy-upgrade-output",		coal.generators,	"onUpgradePowerOutput");
+	bind("coal-generators-buy-upgrade-burn-rate",	coal.generators,	"onUpgradeBurnRate");
+	bind("coal-generators-buy-upgrade-output",		coal.generators,	"onUpgradeOutput");
 	bind("coal-generators-buy-upgrade-efficiency",	coal.generators,	"onUpgradeEfficiency");
 }
 
