@@ -203,3 +203,9 @@ var coal = {
 		return this.mining.upkeep + this.storage.upkeep + this.generators.upkeep;
 	},
 };
+
+var dataModel = {
+	economy: economy,
+	power: power,
+	coal: coal,
+};

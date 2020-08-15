@@ -16,21 +16,21 @@
 			<div class="container">
 				<h1>Economy</h1>
 				<div class="box">
-					<div id="economy-balance" class="big-text"></div>
+					<div id="economy-balance" class="value money big-text"></div>
 					<table>
 						<tr>
 							<td>Sale Price Per MW</td>
-							<td id="economy-sale-price"></td>
-							<td><button id="economy-decrease-sale-price" class="action-button">-</button></td>
-							<td><button id="economy-increase-sale-price" class="action-button">+</button></td>
+							<td id="economy-salePricePerMW" class="value money"></td>
+							<td><button id="economy-onDecreaseSalePrice" class="action-button">-</button></td>
+							<td><button id="economy-onIncreaseSalePrice" class="action-button">+</button></td>
 						</tr>
 						<tr>
 							<td>Revenue</td>
-							<td id="economy-revenue"></td>
+							<td id="economy-revenue" class="value money"></td>
 						</tr>
 						<tr>
 							<td>Upkeep</td>
-							<td id="economy-upkeep"></td>
+							<td id="economy-upkeep" class="value money"></td>
 						</tr>
 					</table>
 				</div>
@@ -46,8 +46,8 @@
 						<th><h2 class="stat-header">Demand</h2></th>
 					</tr>
 					<tr>
-						<td id="power-supply" class="big-text"></td>
-						<td id="power-demand" class="big-text"></td>
+						<td id="power-supply" class="value power big-text"></td>
+						<td id="power-demand" class="value power big-text"></td>
 					</tr>
 				</table>
 			</div>
@@ -64,7 +64,7 @@
 			<div class="container">
 				<h1>Quarry</h1>
 				<div class="box">
-					<div id="coal-quarry" class="big-text"></div>
+					<div id="coal-quarry-supply" class="value mass big-text"></div>
 				</div>
 			</div>
 			
@@ -82,29 +82,37 @@
 						<th><h2 class="loss-header">Upkeep</h2></th>
 					</tr>
 					<tr>
-						<td id="coal-mining-rate" class="big-text"></td>
-						<td id="coal-mining-upkeep" class="big-text"></td>
+						<td id="coal-mining-rate" class="value mass big-text"></td>
+						<td id="coal-mining-upkeep" class="value money big-text"></td>
 					</tr>
 				</table>
 				<div class="box">
 					<table>
 						<tr>
 							<td>Miner Count</td>
-							<td id="coal-mining-miner-count"></td>
-							<td><button id="coal-mining-buy-miner" class="action-button"></button></td>
+							<td id="coal-mining-minerCount" class="value"></td>
+							<td>
+								<button id="coal-mining-onHireMiner" class="action-button">
+									<div id="coal-mining-priceHireMiner" class="value buy"></div>
+								</button>
+							</td>
 						</tr>
 						<tr>
 							<td>Miner Rate</td>
-							<td id="coal-mining-miner-rate"></td>
-							<td><button id="coal-mining-buy-upgrade-rate" class="action-button"></button></td>
+							<td id="coal-mining-minerRate" class="value mass"></td>
+							<td>
+								<button id="coal-mining-onUpgradeRate" class="action-button">
+									<div id="coal-mining-priceUpgradeRate" class="value upgrade"></div>
+								</button>
+							</td>
 						</tr>
 						<tr>
 							<td>Miner Upkeep</td>
-							<td id="coal-mining-miner-upkeep"></td>
+							<td id="coal-mining-minerUpkeep" class="value money"></td>
 						</tr>
 						<tr>
 							<td>Max Rate</td>
-							<td id="coal-mining-max-rate"></td>
+							<td id="coal-mining-maxRate" class="value mass"></td>
 						</tr>
 					</table>
 				</div>
@@ -124,29 +132,37 @@
 						<th><h2 class="loss-header">Upkeep</h2></th>
 					</tr>
 					<tr>
-						<td id="coal-storage-stored" class="big-text"></td>
-						<td id="coal-storage-upkeep" class="big-text"></td>
+						<td id="coal-storage-stored" class="value mass big-text"></td>
+						<td id="coal-storage-upkeep" class="value money big-text"></td>
 					</tr>
 				</table>
 				<div class="box">
 					<table>
 						<tr>
 							<td>Unit Count</td>
-							<td id="coal-storage-unit-count"></td>
-							<td><button id="coal-storage-buy-unit" class="action-button"></button></td>
+							<td id="coal-storage-unitCount" class="value"></td>
+							<td>
+								<button id="coal-storage-onBuyUnit" class="action-button">
+									<div id="coal-storage-priceBuyUnit" class="value buy"></div>
+								</button>
+							</td>
 						</tr>
 						<tr>
 							<td>Unit Capacity</td>
-							<td id="coal-storage-unit-capacity"></td>
-							<td><button id="coal-storage-buy-upgrade-capacity" class="action-button"></button></td>
+							<td id="coal-storage-unitCapacity" class="value mass"></td>
+							<td>
+								<button id="coal-storage-onUpgradeCapacity" class="action-button">
+									<div id="coal-storage-priceUpgradeCapacity" class="value upgrade"></div>
+								</button>
+							</td>
 						</tr>
 						<tr>
 							<td>Unit Upkeep</td>
-							<td id="coal-storage-unit-upkeep"></td>
+							<td id="coal-storage-unitUpkeep" class="value money"></td>
 						</tr>
 						<tr>
 							<td>Max Capacity</td>
-							<td id="coal-storage-max-capacity"></td>
+							<td id="coal-storage-maxCapacity" class="value mass"></td>
 						</tr>
 					</table>
 				</div>
@@ -166,43 +182,59 @@
 						<th><h2 class="loss-header">Upkeep</h2></th>
 					</tr>
 					<tr>
-						<td id="coal-generators-output" class="big-text"></td>
-						<td id="coal-generators-upkeep" class="big-text"></td>
+						<td id="coal-generators-output" class="value power big-text"></td>
+						<td id="coal-generators-upkeep" class="value money big-text"></td>
 					</tr>
 				</table>
 				<div class="box">
 					<table>
 						<tr>
 							<td>Turbine Count</td>
-							<td id="coal-generators-turbine-count"></td>
-							<td><button id="coal-generators-buy-turbine" class="action-button"></button></td>
+							<td id="coal-generators-turbineCount" class="value"></td>
+							<td>
+								<button id="coal-generators-onBuyTurbine" class="action-button">
+									<div id="coal-generators-priceBuyTurbine" class="value buy"></div>
+								</button>
+							</td>
 						</tr>
 						<tr>
 							<td>Turbine Burn Rate</td>
-							<td id="coal-generators-turbine-burn-rate"></td>
-							<td><button id="coal-generators-buy-upgrade-burn-rate" class="action-button"></button></td>
+							<td id="coal-generators-turbineBurnRate" class="value mass"></td>
+							<td>
+								<button id="coal-generators-onUpgradeBurnRate" class="action-button">
+									<div id="coal-generators-priceUpgradeBurnRate" class="value upgrade"></div>
+								</button>
+							</td>
 						</tr>
 						<tr>
 							<td>Turbine Output</td>
-							<td id="coal-generators-turbine-output"></td>
-							<td><button id="coal-generators-buy-upgrade-output" class="action-button"></button></td>
+							<td id="coal-generators-turbineOutput" class="value power"></td>
+							<td>
+								<button id="coal-generators-onUpgradeOutput" class="action-button">
+									<div id="coal-generators-priceUpgradeOutput" class="value upgrade"></div>
+								</button>
+							</td>
 						</tr>
 						<tr>
 							<td>Turbine Efficiency</td>
-							<td id="coal-generators-turbine-efficiency"></td>
-							<td><button id="coal-generators-buy-upgrade-efficiency" class="action-button"></button></td>
+							<td id="coal-generators-turbineEfficiency" class="value perc"></td>
+							<td>
+								<button id="coal-generators-onUpgradeEfficiency" class="action-button">
+									<div id="coal-generators-priceUpgradeEfficiency" class="value upgrade"></div>
+								</button>
+							</td>
 						</tr>
 						<tr>
 							<td>Turbine Upkeep</td>
-							<td id="coal-generators-turbine-upkeep"></td>
+							<td id="coal-generators-turbineUpkeep" class="value money"></td>
 						</tr>
 						<tr>
 							<td>Max Burn Rate</td>
-							<td id="coal-generators-max-burn-rate"></td>
+							<td id="coal-generators-maxBurnRate" class="value mass"></td>
 						</tr>
 						<tr>
 							<td>Max Output</td>
-							<td id="coal-generators-max-output"></td>
+							<td id="coal-generators-maxOutput" class="value power"></td>
 						</tr>
 					</table>
 				</div>
